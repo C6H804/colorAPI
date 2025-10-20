@@ -11,20 +11,37 @@ const app = express();
 app.use(cors({
     origin: [
         "http://127.0.0.1",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5500",
         "http://localhost",
+        "http://localhost:3000",
+        "http://localhost:5500",
         "http://193.252.183.142",
         "http://192.168.1.63",
         "https://acportail.fr",
-        "null" // Pour les fichiers ouverts localement (file://)
+        "null" // pour les fichiers ouverts localement (file://)
         // insérer ici les adresses pour l'accés à l'API
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 200
 }));
 
+// Gestion explicite des requêtes OPTIONS pour toutes les routes
+app.use((req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        res.header('Access-Control-Allow-Credentials', 'true');
+        return res.sendStatus(200);
+    }
+    next();
+});
+
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../public")));
+// app.use(express.static(path.join(__dirname, "../public")));
 
 // Configuration Swagger avec fichier YAML externe
 const swaggerDocument = YAML.load(path.join(__dirname, "./docs/swagger.yaml"));
@@ -44,9 +61,6 @@ const colors = require("./routes/colors.route");
 const users = require("./routes/users.route");
 const auth = require("./routes/auth.route");
 
-
-
-
 app.get("/apitest", (req, res) => {
     res.status(200).json({ message: "Test route is working", status: 200 });
 });
@@ -54,6 +68,8 @@ app.get("/apitest", (req, res) => {
 app.use("/api/colors", colors);
 app.use("/api", users);
 app.use("/api", auth);
+app.use("/api", login);
+app.use("/api", register);
 
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, "../public/pages/notfound.html"));

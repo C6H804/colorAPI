@@ -1,6 +1,6 @@
 export const getUserPermissions = async (userId) => {
     try {
-        const permissions = await fetch(`/api/permissions/${userId}`, {
+        const permissions = await fetch(`http://127.0.0.1:3000/api/permissions/${userId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <script src="../dist/js/admin/script.js" defer type="module"></script>
+    <link rel="stylesheet" href="../dist/css/admin/style.css">
+    <link rel="icon" type="image/x-icon" href="../dist/img/favicon.ico">
+</head>
+<body>
+    <section class="header">
+        <div class="title">
+            <a class="logo" href="https://www.ACPORTAIL.fr/"><img src="../dist/img/Logo_ACPORTAIL_Small_01.png" alt="logo ACPORTAIL"></a>
+            <h1>Pages admin</h1>
+            <button onclick="location.href='dashboard.html'" class="btn-dashboard btn">Tableau de bord</button>
+        </div>
+        <button class="btn-addColor btn" id="btn-addColor">Ajouter une couleur</button>
+    </section>
+    <section class="main">
+        <h2>Liste des utilisateurs</h2>
+        <div class="user-list" id="user-list-container">
+        </div>
+        <h2>Logs de couleurs</h2>
+        <div class="logs" id="logs-container">
+        </div>
+    </section>
+    <section class="footer"></section>
+</body>
+</html>

@@ -7,7 +7,7 @@ export const modifyStock = async (id, permissions) => {
     const matte = document.getElementById("matteStock").checked ? 1 : 0;
     const sanded = document.getElementById("sandedStock").checked ? 1 : 0;
     try {
-        const response = await fetch("http://localhost:3000/api/colors/modifyStock/" + id, {
+        const response = await fetch("http://193.252.183.142:3000/api/colors/modifyStock/" + id, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -1,7 +1,7 @@
 export const fetchLastUpdate = async () => {
     try {
         const token = window.localStorage.getItem("token");
-        const response = await fetch("http://localhost:3000/api/colors/lastUpdate", {
+        const response = await fetch("http://193.252.183.142:3000/api/colors/lastUpdate", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

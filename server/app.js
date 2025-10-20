@@ -72,7 +72,7 @@ app.use("/api", login);
 app.use("/api", register);
 
 app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, "../public/pages/notfound.html"));
+    res.status(404).sendFile(path.join(__dirname, "middlewares/notfound/notfound.html"));
 });
 
 const { closeAllPools } = require("./config/db.connection.root");

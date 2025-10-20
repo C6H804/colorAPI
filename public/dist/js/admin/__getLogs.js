@@ -1,6 +1,6 @@
 export const getLogs = async () => {
     try {
-        const response = await fetch("http://127.0.0.1:3000/api/logs", {
+        const response = await fetch("http://193.252.183.142:3000/api/logs", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

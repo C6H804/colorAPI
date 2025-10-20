@@ -1,6 +1,6 @@
 export const fetchColors = async (filter) => {
     try {
-        const response = await fetch("http://localhost:3000/api/colors/list", {
+        const response = await fetch("http://193.252.183.142:3000/api/colors/list", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
